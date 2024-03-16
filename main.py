@@ -66,9 +66,12 @@ def read_csv_files(directory):
             urls = [row[0] for row in reader]
             urls.pop(0)
             urls = [item for item in urls if item != ""]
+            filtered_urls = [entry for entry in urls if "photo" not in entry.lower()]
             download_tiktok_video(
-                        urls, "video.mp4", getPath(os.path.basename(file_path)).split(".")[0]
-                    )
+                filtered_urls,
+                "video.mp4",
+                getPath(os.path.basename(file_path)).split(".")[0],
+            )
 
 
 directory_path = "E:\\Freelance Dev Projects\\tiktok\\userCSVs"
